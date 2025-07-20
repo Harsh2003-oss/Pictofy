@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login',function(req, res, next) {
-  res.render('login',);
+  res.render('login',{error:req.flash('error')});
 });
 
 
@@ -56,7 +56,8 @@ userModel.register(userData,req.body.password)
 
 router.post("/login",passport.authenticate("local",{
   successRedirect:"/profile",
-  failureRedirect:"/login"
+  failureRedirect:"/login",
+  failureFlash :true
 }),
   function(req,res){
 })
