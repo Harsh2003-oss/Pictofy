@@ -13,11 +13,15 @@
       <div class="profile-picture">
         <img src="https://media.istockphoto.com/id/1422478091/photo/close-up-of-a-hands-on-a-laptop-keyboard.jpg?s=2048x2048&w=is&k=20&c=Dz7TPhnWVfS1Ou8BlCmDWPSuNEn0f19_74ivC9ArZjU=">
       </div>
-      <h2 class="name">Mr. X</h2>
-      <h3 class="username">@sinhaharsh</h3>
+      <h2 class="name"><%=user.fullname %></h2>
+      <h3 class="username">@<%=user.username %></h3>
       <p class="tagline">Keep going.</p>
       <p class="description">Calmness</p>
-      <a href="#" class="button">Logout</a>
+      <a href="/logout" class="button">Logout</a>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Upload</button>
+      </form>
     </div>
       </div>
 
