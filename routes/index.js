@@ -24,10 +24,15 @@ router.get('/feed', function(req, res, next) {
 });
 
 
-router.get('/profile', isLoggedIn,function(req, res, next) {
+router.post('/profile',isLoggedIn,function(req, res, next) {
+
   res.render("profile")
 });
 
+router.get('/profile',isLoggedIn,function(req, res, next) {
+
+  res.render("profile")
+});
 
 router.post("/register",function(req,res){
 //   let userData =  new userModel({
@@ -36,8 +41,9 @@ router.post("/register",function(req,res){
 //   fullName: req.body.fullName
 //   })
 //OR you can write this
+console.log(req.body)
 const { username, email, fullname } = req.body;
-let userData = new userModel({ username, email, fullName:fullname });
+let userData = new userModel({ username, email, fullname:fullname });
 
 userModel.register(userData,req.body.password)
 .then(function(){
