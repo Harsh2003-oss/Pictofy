@@ -24,6 +24,22 @@ router.get('/feed', function(req, res, next) {
   res.render('feed',);
 });
 
+//route for uploading on profile page
+router.post('/upload', isLoggedIn,upload.single("file"),async function(req, res, next) {  //upload.single due to this line upload occurs
+if(!req.file){
+ return res.status(404).send("no files were given")
+}
+// jo bhi file upload hui hai use save karso as a post and uska postid user ko do and post ko user id do
+const user = await userModel.findOne({username:req.session.passport.user})
+const postdata = await postModel.create({
+  image:req.file.filename,  //name of uploaded file
+imageText:req.body.filecaption,
+ser: user._id
+})
+ user.posts.push(postdata._id); //post id is assigned in users.js
+await user.save();
+ res.redirect("/profile")
+});
 
 router.post('/profile',isLoggedIn,function(req, res, next) {
 
@@ -34,6 +50,7 @@ router.get('/profile',isLoggedIn,async function(req, res, next) {
 const user = await userModel.findOne({
   username:req.session.passport.user
 })
+.populate("posts")
 console.log(user)
   res.render("profile",{user})
 });
