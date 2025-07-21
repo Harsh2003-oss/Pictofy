@@ -24,12 +24,12 @@ router.get('/feed', function(req, res, next) {
   res.render('feed',);
 });
 
-//route for uploading on profile page
+//route for uploading images on profile page
 router.post('/upload', isLoggedIn,upload.single("file"),async function(req, res, next) {  //upload.single due to this line upload occurs
 if(!req.file){
  return res.status(404).send("no files were given")
 }
-// jo bhi file upload hui hai use save karso as a post and uska postid user ko do and post ko user id do
+// jo bhi file upload hui hai use save karo as a post and uska postid user ko do and post ko user id do
 const user = await userModel.findOne({username:req.session.passport.user})
 const postdata = await postModel.create({
   image:req.file.filename,  //name of uploaded file

@@ -3,6 +3,7 @@ body {
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
+  
 }
 
 .containerpers {
@@ -14,7 +15,8 @@ body {
 .cardpers {
   background-color: #fff;
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
+  margin: 10px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -60,13 +62,14 @@ body {
 .button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #6c1d1d;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s;
+  margin-bottom: 15px;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #280e0e;
 }
